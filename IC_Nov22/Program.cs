@@ -2,23 +2,22 @@
 using OpenQA.Selenium.Chrome;
 
 IWebDriver driver= new ChromeDriver();
-
+driver.Manage().Window.Maximize();
 driver.Navigate().GoToUrl("http://horse.industryconnect.io/Account/Login");
-driver.Manage().Window.Maximize ();
 
-IWebElement usernametextbox = driver.FindElement(By.Id("UserName"));
-usernametextbox.SendKeys("hari");
+IWebElement usernameTextbox = driver.FindElement(By.Id("UserName"));
+usernameTextbox.SendKeys("hari");
 
-IWebElement passwordtextbox = driver.FindElement(By.Id("Password"));
-passwordtextbox.SendKeys("123123");
+IWebElement passwordTextbox = driver.FindElement(By.Id("Password"));
+passwordTextbox.SendKeys("123123");
 
-IWebElement loginbutton = driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
-loginbutton.Click();
+IWebElement loginButton = driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[3]/input[1]"));
+loginButton.Click();
 
-IWebElement hellohari = driver.FindElement(By.XPath("//*[@id=\"logoutForm\"]/ul/li/a"));
-String helloharistring = hellohari.Text;
+IWebElement helloHari = driver.FindElement(By.XPath("//*[@id=\"logoutForm\"]/ul/li/a"));
+String helloHariString = helloHari.Text;
 
-if (helloharistring == "Hello hari!")
+if (helloHariString == "Hello hari!")
 {
     Console.WriteLine("Login Successfully");
 } else
