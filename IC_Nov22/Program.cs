@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Xml.Linq;
 
 IWebDriver driver= new ChromeDriver();
 driver.Manage().Window.Maximize();
@@ -69,6 +70,8 @@ Thread.Sleep(1500);//Hold for 1.5 Seconds
 //click on last page button
 IWebElement gotoLastPageButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
 gotoLastPageButton.Click();
+Thread.Sleep(1500);//Hold for 1.5 Seconds
+
 
 //check whether new record created or not
 IWebElement newCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
@@ -81,6 +84,60 @@ else
 {
     Console.WriteLine("Record not created successfully");
 }
+
+
+//Edit the time and material details
+IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[6]/td[5]/a[1]"));
+editButton.Click();
+IWebElement codeEdit = driver.FindElement(By.Id("Code"));
+Console.WriteLine(codeEdit.Text);
+codeEdit.Clear();
+codeEdit.SendKeys("TETUD");
+IWebElement saveButtonEdit = driver.FindElement(By.Id("SaveButton"));
+saveButtonEdit.Click();
+
+Thread.Sleep(1000);
+//check whether the detail edited or not
+IWebElement newCodeEdit = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[6]/td[1]"));
+
+Console.WriteLine(newCodeEdit.Text);
+
+
+if (newCodeEdit.Text == "TETUD")
+{
+    Console.WriteLine("Record edited");
+}
+else
+{
+    Console.WriteLine("Record not edited");
+}
+Thread.Sleep(1000);
+
+//Delete the time and material details
+IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[4]/td[5]/a[2]"));
+deleteButton.Click();
+driver.SwitchTo().Alert().Accept();
+
+Thread.Sleep(1000);
+
+//check whether the detail deleted or not
+IWebElement numberOfEntries = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/span[2]"));
+if (numberOfEntries.Text == "10256")
+{
+    Console.WriteLine("Record not deleted");
+}
+else
+{
+    Console.WriteLine("Record deleted");
+}
+
+
+
+
+
+
+
+
 
 
 
