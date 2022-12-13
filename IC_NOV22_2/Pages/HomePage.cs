@@ -8,7 +8,7 @@ namespace IC_NOV22_2.HomePage
         public void GotoTmPage(IWebDriver driver)
         {
             //click on the admistration menu
-            
+            Thread.Sleep(500);
             IWebElement admistrationMenu = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a"));
             admistrationMenu.Click();
             Thread.Sleep(1000);

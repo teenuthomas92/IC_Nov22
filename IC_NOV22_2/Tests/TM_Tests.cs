@@ -22,7 +22,7 @@ namespace IC_NOV22_2.Tests
             Homepage HomePageobj = new Homepage();
             HomePageobj.GotoTmPage(driver);
             TMpage Tmpageobj = new TMpage();
-            Tmpageobj.EditTM(driver);
+          //  Tmpageobj.EditTM(driver, Description);
         }
         [Test, Order(3), Description("Check if user is able to delete a new record with valid data")]
         public void DeleteTM_Test()

@@ -4,7 +4,7 @@ namespace IC_NOV22_2.Utilities
 {
     public class CommonDriver
     {
-        public static IWebDriver driver;
+        public IWebDriver driver;
        
         [OneTimeSetUp]
         public void LoginSteps()

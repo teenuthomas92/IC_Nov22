@@ -80,7 +80,7 @@ namespace IC_NOV22_2.Pages
             employeeEditButton.Click();
             IWebElement usernameEdit = driver.FindElement(By.Id("Username"));
             usernameEdit.Clear();
-            usernameEdit.SendKeys("TETUD");
+            usernameEdit.SendKeys("TEEN");
             IWebElement employeeSaveButtonEdit = driver.FindElement(By.Id("SaveButton"));
             employeeSaveButtonEdit.Click();
 
@@ -95,8 +95,8 @@ namespace IC_NOV22_2.Pages
             Thread.Sleep(500);
 
             //Record is edited or not
-            IWebElement username = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[2]"));
-            Assert.That(username.Text == "TETUD", "Employee is not edited");
+            IWebElement Newusername = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[2]"));
+            Assert.That(Newusername.Text == "TEEN", "Employee is not edited");
 
         }
 
@@ -107,6 +107,7 @@ namespace IC_NOV22_2.Pages
             //goto lastpage
             IWebElement gotoemployeelastpage = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[4]/a[4]/span"));
             gotoemployeelastpage.Click();
+            Thread.Sleep(1000);
             //click on deletebutton
             IWebElement employeeeDeleteButton = driver.FindElement(By.XPath("//*[@id=\"usersGrid\"]/div[3]/table/tbody/tr[last()]/td[3]/a[2]"));
             employeeeDeleteButton.Click();
